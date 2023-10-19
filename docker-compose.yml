@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  agate:
+    restart: always
+    build: .
+    volumes:
+      - ./content:/var/agate/content
+      - ./certs:/var/agate/certs
+    ports:
+      - "1965:1965"
+    command:
+      - --content
+      - content
+      - --certs
+      - certs
+      - --addr
+      - 0.0.0.0:1965
+      - --hostname
+      - example.com
+      - --lang
+      - en-US
